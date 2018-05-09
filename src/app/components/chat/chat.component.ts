@@ -19,20 +19,37 @@ export class ChatComponent implements OnInit {
   private id_conver;
   private me = localStorage.getItem('id_user');
   public conver;
+  private user_conver;
 
     ngOnInit() {
+
         this.refreshData();
         setInterval(() => { 
             this.refreshData(); 
         }, 500);
+      
+        
+        setTimeout(function() {
+          var objDiv = document.getElementById("position-bottom");
+          objDiv.scrollTop = objDiv.scrollHeight;
+        }, 200);
+      
     }
+
+  getToBot(){
+    var objDiv = document.getElementById("position-bottom");
+    objDiv.scrollTop = objDiv.scrollHeight;
+  }
 
   refreshData(){
 
     this.route.params.subscribe(params => {     
       this.id_conver = params['id'];   
       this.getChat(this.id_conver,this.me);
+      this.getNombreById(this.id_conver);
     });
+
+    
 
   }
 
@@ -49,6 +66,22 @@ export class ChatComponent implements OnInit {
         console.log(<any>error);
       }
     );
+  }
+
+  getNombreById(id_conver){
+
+    this.ChatApi.getName(id_conver).subscribe(
+      response => {
+       
+        this.user_conver = response.result;
+        
+        
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+
   }
 
 }

@@ -1,8 +1,13 @@
-  <ul>
-    
-    <li *ngFor="let message of conver" class="{{message.sender == me ? 'right' : 'left'}}">
-      <span >{{message.message}}</span>
+<div class="top-conver effect6">
+  <img class="user-image-chat" height="50px" src="assets/img/{{id_conver}}.jpg">
+  <h2>{{user_conver}}</h2>
+</div>
+<div class="chat-actual fondo">   
+  <ul class="conver-chat-style" id="position-bottom">
+    <li *ngFor="let message of conver" class="{{message.sender == me ? 'li-right' : 'li-left'}}">
+      <span class="{{message.sender == me ? 'right' : 'left'}}">{{message.message}}</span>
     </li>
-
-  </ul>
+  </ul> 
+</div>
+ 
 

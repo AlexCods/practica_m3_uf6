@@ -1,28 +1,48 @@
 <div class="dashboard">
-  <div class="col-md-12">
-    <div class="row col-md-12">
-        <h3>
-            Benvingut {{user}}
-        </h3>
-    </div>
-    <div class="row col-md-12">
-      <div class="col-md-3 chats-abiertos">
+  <div class="col-md-12 no-padding">
+    <div class="row col-md-12 no-padding no-margin">
+      <div class="col-md-3 chats-abiertos no-padding">
+        <div class="top-conver effect6">
+          <h2>Los chats de {{user}}</h2>
+        </div>
         <ul>
-            <li *ngFor="let conversa of converses">
-              <a routerLink="/dashboard/{{conversa.sender == id_user ? conversa.receiver : conversa.sender }}">{{conversa.last_message}}</a>
+          <input type="text" class="abrir-conver" (keyup)="abrirConver()" placeholder="Abrir nueva conversación">
+          <div class="abrir-nuevo-chat">
+            <li *ngFor="let posible_user of posible_users" class="pre-chat">
+              <a routerLink="/dashboard/{{ posible_user[0] }}"><img height="50px" class="user-image-chat" src="assets/img/{{ posible_user[0] }}.jpg">{{ posible_user[1] }}</a>
             </li>
+          </div>
+          <ul class="ultimo-mensaje-chat-abierto">
+              <li *ngFor="let conversa of converses" class="pre-chat">
+                
+                  <a routerLink="/dashboard/{{conversa.sender == id_user ? conversa.receiver : conversa.sender }}">
+                    <img height="50px" class="user-image-chat no-margin" style="float:left" src="assets/img/{{conversa.sender == id_user ? conversa.receiver : conversa.sender }}.jpg">
+                    <div class="row">
+                        <span style="color: black" class="col-md-9">
+                            {{ users[conversa.sender == id_user ? conversa.receiver : conversa.sender] }}
+                        </span>
+                    </div>
+                    <div class="row">
+                        <span style="color: rgba(0, 0, 0, 0.6)" class="col-md-9">
+                            {{(conversa.last_message.length > 40) ? conversa.last_message.substring(0,40) + '...' : conversa.last_message }}
+                        </span>
+                    </div>
+                    
+                    
+                  </a>
+                </li>
+          </ul>
+            
         </ul>
       </div>
-      <div class="col-md-9 chat-actual">
-        <app-chat></app-chat>
-        
-      </div>
+      <app-chat class="col-md-9 no-margin no-padding"></app-chat>
+      
     </div>
     
   </div>
 </div>
 <div class="enviar_mensaje col-md-9">
-  <input class="mensaje" (keyup)="$event.code == 'Enter' ? enviarMensaje() : null" type="text">  
+  <input class="mensaje" (keyup)="$event.code == 'Enter' ? enviarMensaje() : null" type="text" placeholder="Escribe un mensaje aquí...">  
   <input type="button" (click)="enviarMensaje()" value="Enviar">
 </div>
 

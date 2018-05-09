@@ -29,6 +29,12 @@ export class ChatApiService {
                     .map(res => res.json());
   }
 
+  getName(id_user) {
+    let headers = new Headers({'Content-Type':'application/json'});
+    return this.http.get(GLOBAL.url+'/getName/'+id_user,{headers: headers})
+                    .map(res => res.json());
+  }
+
   enviarMensaje(sender,receiver,message) {
 
     var data = {

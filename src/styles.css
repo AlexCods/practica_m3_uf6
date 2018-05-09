@@ -33,3 +33,139 @@ input:focus{
 .users-chat img{
     cursor: pointer;
 }
+
+.left{
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    display: block !important;
+    width: fit-content;
+}   
+
+.li-left{
+    display: flex !important;
+    justify-content: flex-start;
+}
+
+.li-right{
+    display: flex !important;
+    justify-content: flex-end;
+}
+
+.right{
+    background-color: #dcf8c7;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: right !important;
+    display: block !important;  
+    width: fit-content;  
+    justify-content: flex-end;
+}
+
+.fondo{
+    background: url('assets/images/whatsapp.png');
+}
+
+.nav-top{
+    
+}
+
+.fondo-nada{
+    background-color: #f7f9fa;
+    overflow: scroll;
+    max-height: 400px;
+}
+
+body{
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.conver-chat-style{
+    height: 725px;
+    overflow: scroll;
+}
+
+.enviar_mensaje{
+    background-color: #f5f1ef;
+    padding: 30px;
+    padding-left: 50px;
+    position: relative;
+}
+
+.enviar_mensaje input[type="text"]{
+    background: #fff;
+    border: 0px;
+    border-radius: 10px;
+    width: 97%;
+    padding: 15px;
+    margin: auto;
+    float: none;
+    display: flex;
+    font-weight: 400;
+}
+
+.enviar_mensaje input[type="button"]{
+    display: none;
+}
+
+.no-padding{
+    padding: 0px !important;
+}
+
+.no-margin{
+    margin: 0px !important;
+}
+
+.top-conver{
+    background-color: #eeeeee;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    border-right: 1px solid lightgrey;
+}
+
+.user-image-chat{
+    border-radius: 100%;
+    margin-right: 25px;
+}
+
+li{
+    list-style: none;
+}
+
+ul{
+    padding: 0px;
+}
+
+.pre-chat{
+    padding: 10px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.ultimo-mensaje-chat-abierto:first-child{
+    border-top: 1px solid lightgrey;
+}
+
+
+.abrir-conver{
+    width: 90%;
+    border-radius: 20px;
+    border: 0;
+    border: 1px solid lightgrey;
+    padding: 10px;
+    margin: auto;
+    float: none;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.effect6
+{
+    position:relative;
+    box-shadow: 0px 3px 2px -2px rgb(155, 155, 155);
+}

@@ -21,6 +21,8 @@ export class DashboardComponent implements OnInit {
   private id_user = localStorage.getItem('id_user');
   public converses = [];
   public id_conver;
+  private posible_users = [];
+  private users = [];
 
   constructor(private router: Router,private ChatApi: ChatApiService,private route: ActivatedRoute) { }
 
@@ -36,28 +38,64 @@ export class DashboardComponent implements OnInit {
     this.refreshData();
     setInterval(() => { 
         this.refreshData(); 
-    }, 1000);
+        
+    }, 90000);
     
     
     this.route.params.subscribe(params => {
       
+      
       this.id_conver = params['id'];   
+
+      setTimeout(function() {
+        var objDiv = document.getElementById("position-bottom");
+        objDiv.scrollTop = objDiv.scrollHeight;
+      }, 500);
 
     });
 
+    this.getAllUsers();
+
+  }
+
+  getAllUsers(){
+    this.ChatApi.getAllUsers().subscribe(
+      response => {
+       
+        var aux = [];
+
+        $.each(response.result, function(index,value){
+          aux[value.id] = value.name;
+        });
+        
+        this.users = aux;
+
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+  }
+
+  getNombreUser(id){
+    
+    $.each(this.users, function(index,value){
+
+      if ( id == value[0] ) {
+        return value[1];
+      }
+
+    });
 
   }
 
   refreshData(){
+    //this.getToBot();
     this.getChatsUser(this.id_user);
   }
 
   ir_login(){
     this.router.navigate(['']);
-  }
-
-  hola(){
-    console.log('hola');
   }
 
   getChatsUser(id_user){
@@ -73,11 +111,69 @@ export class DashboardComponent implements OnInit {
         });
 
         this.converses = test;
+        console.log(this.converses);
       },
       error => {
         console.log(<any>error);
       }
     );
+  }
+
+  getToBot(){
+   
+      var objDiv = document.getElementById("position-bottom");
+      objDiv.scrollTop = objDiv.scrollHeight;
+    
+  }
+
+  abrirConver(){
+    
+    this.ChatApi.getAllUsers().subscribe(
+      response => {
+        
+
+        if (response.state == 'OK') {
+
+            var user = $('.abrir-conver').val();
+            var html = "";
+            this.posible_users = [];
+            var posible_us = [];
+          
+            if (user == "") {
+
+              this.posible_users = [];
+
+            } else {
+          
+            $.each(response.result, function(index,value){
+              
+              var aux_user = user.toUpperCase();
+              var aux_value = value.name.toUpperCase();
+
+              if (aux_value.includes(aux_user)) {
+                console.log('hago push');
+                posible_us.push([value.id,value.name]);
+                //html += '<a href="/dashboard/' + value.id + '"><li style="padding: 10px"><img class="user-image-chat" height="45px" src="assets/img/' + value.id + '.jpg">' + value.name + '</li></a>';  
+              }
+
+            });
+
+            this.posible_users = posible_us;
+            //$('.abrir-nuevo-chat').html(html);
+            //$('.abrir-nuevo-chat').fadeIn();
+          }
+
+        } else {
+          $('.errors').append('No se pueden cargar los usuarios');
+        }
+        
+        
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+
   }
 
   enviarMensaje(){
@@ -89,6 +185,12 @@ export class DashboardComponent implements OnInit {
      
         if (response.state == 'OK') {
           $('.mensaje').val('');
+
+          setTimeout(function() {
+            var objDiv = document.getElementById("position-bottom");
+            objDiv.scrollTop = objDiv.scrollHeight;
+          }, 500);
+          
         }
 
       },

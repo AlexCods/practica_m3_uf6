@@ -8,6 +8,7 @@ const routes: Routes = [
     { path: '', component: LogComponent },
     { path: 'dashboard/:id', component: DashboardComponent },
     { path: 'dashboard', component: DashboardComponent }
+    
   ];
 
   @NgModule({
