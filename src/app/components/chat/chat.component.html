@@ -1,0 +1,8 @@
+  <ul>
+    
+    <li *ngFor="let message of conver" class="{{message.sender == me ? 'right' : 'left'}}">
+      <span >{{message.message}}</span>
+    </li>
+
+  </ul>
+

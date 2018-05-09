@@ -1,0 +1,28 @@
+<div class="dashboard">
+  <div class="col-md-12">
+    <div class="row col-md-12">
+        <h3>
+            Benvingut {{user}}
+        </h3>
+    </div>
+    <div class="row col-md-12">
+      <div class="col-md-3 chats-abiertos">
+        <ul>
+            <li *ngFor="let conversa of converses">
+              <a routerLink="/dashboard/{{conversa.sender == id_user ? conversa.receiver : conversa.sender }}">{{conversa.last_message}}</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-md-9 chat-actual">
+        <app-chat></app-chat>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+<div class="enviar_mensaje col-md-9">
+  <input class="mensaje" (keyup)="$event.code == 'Enter' ? enviarMensaje() : null" type="text">  
+  <input type="button" (click)="enviarMensaje()" value="Enviar">
+</div>
+

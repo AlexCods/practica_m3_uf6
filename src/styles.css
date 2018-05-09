@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.centrar{
+    margin: auto;
+    float: none;
+}
+
+.title-app{
+    font-weight: 300;
+}
+
+.general{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.input-busqueda{
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid lightgrey;
+}
+
+input:focus{
+    outline: none;
+}
+
+.users-chat img{
+    cursor: pointer;
+}

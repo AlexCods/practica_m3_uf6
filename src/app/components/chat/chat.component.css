@@ -1,0 +1,12 @@
+.left{
+   text-align: left;
+}
+
+.right{
+    text-align: right;
+}
+
+li{
+    list-style: none;
+    display: block;
+}
