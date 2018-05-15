@@ -33,13 +33,11 @@ export class DashboardComponent implements OnInit {
       this.ir_login();
     }
 
-    console.log(this.id_user);
-
     this.refreshData();
     setInterval(() => { 
         this.refreshData(); 
         
-    }, 90000);
+    }, 1000);
     
     
     this.route.params.subscribe(params => {
@@ -111,7 +109,6 @@ export class DashboardComponent implements OnInit {
         });
 
         this.converses = test;
-        console.log(this.converses);
       },
       error => {
         console.log(<any>error);
@@ -151,7 +148,6 @@ export class DashboardComponent implements OnInit {
               var aux_value = value.name.toUpperCase();
 
               if (aux_value.includes(aux_user)) {
-                console.log('hago push');
                 posible_us.push([value.id,value.name]);
                 //html += '<a href="/dashboard/' + value.id + '"><li style="padding: 10px"><img class="user-image-chat" height="45px" src="assets/img/' + value.id + '.jpg">' + value.name + '</li></a>';  
               }

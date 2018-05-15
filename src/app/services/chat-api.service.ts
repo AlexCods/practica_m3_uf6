@@ -42,7 +42,6 @@ export class ChatApiService {
       'receiver' : receiver,
       'message' : message
     }
-    console.log(data);
 
     let headers = new Headers({'Content-Type':'application/json'});
     return this.http.post(GLOBAL.url+'sendMessage',data,{headers: headers})

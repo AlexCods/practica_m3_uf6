@@ -39,7 +39,6 @@ export class LogComponent implements OnInit {
   executar(){
     this.ChatApi.getAllUsers().subscribe(
       response => {
-        console.log(response);
 
         if (response.state == 'OK') {
 

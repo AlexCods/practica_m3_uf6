@@ -1,6 +1,6 @@
 <div class="top-conver effect6">
-  <img class="user-image-chat" height="50px" src="assets/img/{{id_conver}}.jpg">
-  <h2>{{user_conver}}</h2>
+  <img class="user-image-chat" height="50px" src="assets/img/{{ (id_conver) ? id_conver : '2' }}.jpg">  
+  <h2>{{ (user_conver != 'Name not found') ? user_conver : 'Selecciona un usuari' }}</h2>
 </div>
 <div class="chat-actual fondo">   
   <ul class="conver-chat-style" id="position-bottom">
